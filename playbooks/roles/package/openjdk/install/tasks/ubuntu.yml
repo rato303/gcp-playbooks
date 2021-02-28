@@ -1,0 +1,5 @@
+- name: install openjdk
+  become: true
+  apt:
+    pkg:
+      - openjdk-8-jdk
