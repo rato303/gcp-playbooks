@@ -1,0 +1,3 @@
+- import_tasks: tasks/create_disk.yml
+- import_tasks: tasks/create_address.yml
+- import_tasks: tasks/create_instance.yml

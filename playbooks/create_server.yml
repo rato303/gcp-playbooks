@@ -1,0 +1,29 @@
+- name: "create server instance"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    region: "asia-northeast1"
+    zone: "asia-northeast1-a"
+    os_image: "projects/ubuntu-os-cloud/global/images/ubuntu-minimal-2004-focal-v20200729"
+    use_external_ip: yes
+    use_external_static_ip: no
+  vars_prompt:
+    - name: "machine_type"
+      prompt: |-
+        input machine type
+        - e2-micro
+        - e2-small
+        - e2-medium
+        - e2-standard-2
+        - e2-highcpu-8
+      default: "e2-medium"
+      confirm: no
+      private: no
+    - name: "instance_name"
+      prompt: "input instance name"
+      confirm: no
+      private: no
+      default: "dev-server1"
+  roles:
+    - gce/instance/create

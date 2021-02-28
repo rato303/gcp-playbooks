@@ -1,0 +1,6 @@
+.ssh/
+
+inventory/group_vars/all/vars.yml
+inventory/inventory.gcp.yml
+
+credential.json

@@ -1,0 +1,28 @@
+- name: create instance
+  gcp_compute_instance:
+    state: present
+    name: "{{instance_name}}"
+    machine_type: "{{ machine_type }}"
+    disks:
+      - auto_delete: true
+        boot: true
+        source: "{{ disk }}"
+    network_interfaces: "{{ network_interfaces }}"
+    # labels: "{{ labels }}"
+    tags:
+      items: "{{ instance_tags | default([]) }}"
+    zone: "{{ zone }}"
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ gcp_cred_kind }}"
+    metadata:
+      ssh-keys:
+        - "{{ gce_ssh_keys }}"
+    service_account_file: "{{ gcp_cred_file }}"
+    scopes:
+      - https://www.googleapis.com/auth/compute
+    service_accounts:
+      # プロジェクトのGCEのデフォルトサービスアカウントを指定する
+      # ex.) xxxxxxxxxxxx-compute@developer.gserviceaccount.com
+      - email: "{{ gce_service_account_email }}"
+        scopes:
+          - https://www.googleapis.com/auth/devstorage.read_write
