@@ -1,0 +1,10 @@
+- name: Download PHP tar.gz
+  become: true
+  uri:
+    url: "https://www.php.net/distributions/{{ php_tar_file_name }}"
+    timeout: 720
+    method: GET
+    dest: /usr/local/src/
+    remote_src: yes
+    return_content: yes
+  ignore_errors: yes

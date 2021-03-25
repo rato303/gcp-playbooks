@@ -1,0 +1,2 @@
+php_version: 8.0.3
+php_tar_file_name: "php-{{ php_version }}.tar.gz"
