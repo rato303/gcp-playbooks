@@ -1,0 +1,6 @@
+- name: execute configure PHP
+  become: yes
+  shell: > 
+    ./configure
+  args:
+    chdir: /usr/local/src/php-{{ php_version }}

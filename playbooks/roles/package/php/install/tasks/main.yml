@@ -1,2 +1,3 @@
 - include: download.yml
 - include: unarchive.yml
+- include: configure.yml
