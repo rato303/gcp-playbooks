@@ -1,0 +1,5 @@
+- name: install gcc
+  become: true
+  apt:
+    pkg:
+      - gcc
