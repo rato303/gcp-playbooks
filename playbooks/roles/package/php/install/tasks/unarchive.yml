@@ -1,0 +1,6 @@
+- name: Unarchive PHP tar.gz
+  become: true
+  unarchive:
+    src: "/usr/local/src/{{ php_tar_file_name }}"
+    dest: "/usr/local/src/"
+    remote_src: yes
