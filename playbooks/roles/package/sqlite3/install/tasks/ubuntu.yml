@@ -1,0 +1,6 @@
+- name: install sqlite3
+  become: true
+  apt:
+    pkg:
+      - sqlite3
+      - libsqlite3-dev
