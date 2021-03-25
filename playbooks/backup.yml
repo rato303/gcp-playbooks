@@ -1,0 +1,14 @@
+- hosts: "{{ host }}"
+  connection: ssh
+  remote_user: ansible
+  vars:
+    backup_dest_file_name: example.txt
+    backup_src_file_path: /tmp/example.txt
+  vars_prompt:
+    - name: "host"
+      prompt: "input provisioning target gce instance name"
+      confirm: no
+      private: no
+      default: "dev-server1"
+  roles:
+    - gcs/upload
