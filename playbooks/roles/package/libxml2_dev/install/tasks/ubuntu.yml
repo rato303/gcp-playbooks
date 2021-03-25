@@ -1,0 +1,5 @@
+- name: install libxml2-dev
+  become: true
+  apt:
+    pkg:
+      - libxml2-dev
