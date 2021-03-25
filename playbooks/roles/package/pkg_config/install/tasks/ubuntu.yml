@@ -1,0 +1,5 @@
+- name: install pkg-config
+  become: true
+  apt:
+    pkg:
+      - pkg-config
