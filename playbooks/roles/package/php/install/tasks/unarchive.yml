@@ -1,6 +1,11 @@
+- name: check exists PHP directory
+  stat:
+    path: "/usr/local/src/php-{{ php_version }}"
+  register: result
 - name: Unarchive PHP tar.gz
   become: true
   unarchive:
     src: "/usr/local/src/{{ php_tar_file_name }}"
     dest: "/usr/local/src/"
     remote_src: yes
+  when: result.stat.exists == false

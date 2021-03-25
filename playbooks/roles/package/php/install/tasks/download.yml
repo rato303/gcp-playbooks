@@ -1,3 +1,7 @@
+- name: check exists PHP tar.gz
+  stat:
+    path: "/usr/local/src/{{ php_tar_file_name }}"
+  register: result
 - name: Download PHP tar.gz
   become: true
   uri:
@@ -8,3 +12,4 @@
     remote_src: yes
     return_content: yes
   ignore_errors: yes
+  when: result.stat.exists == false
