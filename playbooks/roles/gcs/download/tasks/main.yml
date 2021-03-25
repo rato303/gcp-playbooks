@@ -1,0 +1,21 @@
+- name: Retrieve GCS Access Token
+  uri:
+    url: http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token
+    method: GET
+    headers:
+      Metadata-Flavor: Google
+    return_content: yes
+  run_once: true
+  register: gcs_token_resp
+- name: Download Tarball to GCS Bucket
+  uri:
+    url: "https://storage.googleapis.com/download/storage/v1/b/{{ backup_gcs_bucket_name }}/o/{{ restore_src_file_name }}?alt=media"
+    timeout: 720
+    method: GET
+    dest: "{{ restore_dest_file_path }}"
+    remote_src: yes
+    return_content: yes
+    headers:
+      Authorization: "Bearer {{ gcs_token_resp.json.access_token }}"
+      Content-Type: application/x-tar
+  ignore_errors: yes
