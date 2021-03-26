@@ -9,6 +9,7 @@
       default: "dev-server2"
   roles:
     - package/update
+    - package/nginx/install
     - package/gcc/install
     - package/make/install
     - package/pkg_config/install
