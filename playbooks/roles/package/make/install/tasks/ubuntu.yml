@@ -1,0 +1,5 @@
+- name: install make
+  become: true
+  apt:
+    pkg:
+      - make
