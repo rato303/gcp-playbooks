@@ -1,5 +1,10 @@
+- name: check exists php binary
+  stat:
+    path: "/usr/local/bin/php"
+  register: result
 - name: execute make PHP
   become: yes
   make:
     chdir: /usr/local/src/php-{{ php_version }}
     target: install
+  when: result.stat.exists == false
