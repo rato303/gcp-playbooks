@@ -1,0 +1,5 @@
+- name: install nginx
+  become: true
+  apt:
+    pkg:
+      - nginx
