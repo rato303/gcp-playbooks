@@ -1,0 +1,5 @@
+- name: execute make PHP
+  become: yes
+  make:
+    chdir: /usr/local/src/php-{{ php_version }}
+    target: install

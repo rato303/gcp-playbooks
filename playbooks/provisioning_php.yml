@@ -1,0 +1,17 @@
+- hosts: "{{ host }}"
+  connection: ssh
+  remote_user: ansible
+  vars_prompt:
+    - name: "host"
+      prompt: "input provisioning target gce instance name"
+      confirm: no
+      private: no
+      default: "dev-server2"
+  roles:
+    - package/update
+    - package/gcc/install
+    - package/make/install
+    - package/pkg_config/install
+    - package/libxml2_dev/install
+    - package/sqlite3/install
+    - package/php/install
