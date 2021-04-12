@@ -2,7 +2,7 @@
   connection: ssh
   remote_user: ansible
   vars:
-    apt_upgrade: "yes"
+    package_upgrade: "yes"
   vars_prompt:
     - name: "host"
       prompt: "input provisioning target gce instance name"
