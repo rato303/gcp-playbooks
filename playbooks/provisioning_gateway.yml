@@ -1,0 +1,13 @@
+- hosts: "{{ host }}"
+  connection: ssh
+  remote_user: ansible
+  vars:
+    package_upgrade: "yes"
+  vars_prompt:
+    - name: "host"
+      prompt: "input provisioning target gce instance name"
+      confirm: no
+      private: no
+      default: "dev-server1"
+  roles:
+    - package/update
